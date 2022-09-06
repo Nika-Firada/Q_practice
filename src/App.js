@@ -1,10 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import Pet from "./Pet";
+import SearchParams from "./SearchParams";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World</h1>
+    <div>
+      <h1>Adopt Me!</h1>
+      <SearchParams />
     </div>
   );
 }
