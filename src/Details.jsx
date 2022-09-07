@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import Carousel from './Carousel'
 import ErrorBoundary from './ErrorBoundary'
+import ThemeContext from "./ThemeContext";
+import Modal from './Modal'
 
 const Details = () => {
   const [loading,setLoading] = useState(true)
@@ -14,6 +16,15 @@ const Details = () => {
   const [images, setImages] = useState([]);
   const {id} = useParams();
   const [err, setErr] = useState(false)
+  const [theme] = useContext(ThemeContext)
+  const [showModal,setShowModal] = useState(false)
+
+  function toggleModal() {
+    setShowModal(!showModal)
+  }
+  function adoptPet() {
+    window.location = "http://bit.ly/pet-adopt"
+  }
 
   useEffect(() =>{
     detailsFetch()
@@ -45,8 +56,21 @@ const Details = () => {
           <div>
             <h1>{name}</h1>
             <h2>{animal} - {breed} - {city}, {state}</h2>
-            <button>Adopt {name}</button>
+            <button onClick={toggleModal} style={{backgroundColor: theme}}>Adopt {name}</button>
             <p>{desc}</p>
+            {
+              showModal ? (
+                <Modal>
+                  <div>
+                    <h2>Would you like to adopt {name}?</h2>
+                    <div className="buttons">
+                      <button onClick={adoptPet}>Yes</button>
+                      <button onClick={toggleModal}>No</button>
+                    </div>
+                  </div>
+                </Modal>
+              ): null
+            }
           </div>
         </>
       )}

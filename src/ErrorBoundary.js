@@ -26,6 +26,7 @@ import React, { useState, useEffect } from 'react'
 
 const ErrorBoundary = () => {
     const [redirect,setRedirect] = useState(false)
+    console.log(redirect)
 
     let navigate = useNavigate();
 
