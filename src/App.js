@@ -1,10 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import State from "./State";
+import Effect from "./Effect"
+import Context from "./Context";
+import Ref from "./Ref"
+import Reducer from "./Reducer"
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello World</h1>
+      <State />
+      <hr />
+      <Effect />
+      <hr />
+      <Context />
+      <hr />
+      <Ref />
+      <hr />
+      <Reducer />
+      <hr />
     </div>
   );
 }
