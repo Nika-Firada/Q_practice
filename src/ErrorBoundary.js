@@ -25,27 +25,25 @@ import { Link, useNavigate } from 'react-router-dom'
 import React, { useState, useEffect } from 'react'
 
 const ErrorBoundary = () => {
-    const [redirect,setRedirect] = useState(false)
+    const [redirect,setRedirect] = useState(true)
     console.log(redirect)
 
     let navigate = useNavigate();
 
     useEffect(() => {
-        redirectPage()
+        const red = setTimeout(()=> redirectPage(), 5000)
+        return () => clearTimeout(red)
     },[redirect]);
 
     function redirectPage(){
-        if (redirect){
-            setTimeout(() => setRedirect(true), 3000)
-            return navigate("/");
-        }
+        return navigate("/");
     }
-//აქ შემექმნა პრობლემა
+//აქ შემექმნა პრობლემა -///// მემგონი გამოვასწორე
   return (
     <>
-    {!redirect && <h2>
+    <h2>
         This listing has error <Link to="/">Click Here</Link> to go back to the home page
-    </h2>}
+    </h2>
     </>
   )
 }
