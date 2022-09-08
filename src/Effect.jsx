@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Effect = () => {
+  const [time,setTime] = useState(new Date());
+
+  useEffect(()=>{
+    const timer = setTimeout(() => setTime(new Date()), 1000)
+    return () => clearTimeout(timer)
+  })
   return (
-    <div>UseEffect</div>
+    <h1>useEffect Example: {time.toLocaleTimeString()}</h1>
   )
 }
 

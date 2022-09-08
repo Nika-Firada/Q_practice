@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const State = () => {
+  const [isgreen,setIsGreen] = useState(false)
+
   return (
-    <div>State</div>
+    <h2 
+      onClick={() => setIsGreen(!isgreen)} 
+      style={{color: isgreen ? 'limegreen' : 'black'}}>
+    useState Example
+    </h2>
   )
 }
 
