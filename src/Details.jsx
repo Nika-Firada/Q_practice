@@ -48,7 +48,7 @@ const Details = () => {
   }
 
   return (
-    <div className="details">
+    <div className="">
       {err ? <ErrorBoundary /> : (
         <>
           {loading && <h2>Loading......</h2>}
