@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext, lazy } from 'react'
 import { useParams } from 'react-router-dom'
 import Carousel from './Carousel'
 import ErrorBoundary from './ErrorBoundary'
@@ -48,7 +48,7 @@ const Details = () => {
   }
 
   return (
-    <div className="">
+    <div className="details">
       {err ? <ErrorBoundary /> : (
         <>
           {loading && <h2>Loading......</h2>}
