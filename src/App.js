@@ -1,16 +1,15 @@
 import { useState, lazy, Suspense } from "react";
 import { Routes, Route, Link } from "react-router-dom";
-// import Details from "./Details";
-// import SearchParams from "./SearchParams";
+import Details from "./Details";
+import SearchParams from "./SearchParams";
 import ThemeContext from "./ThemeContext";
-const Details = lazy(()=> import('./Details'))
-const SearchParams = lazy(() => import('./SearchParams'))
+// const Details = lazy(()=> import('./Details'))
+// const SearchParams = lazy(() => import('./SearchParams'))
 
 function App() {
   const theme = useState('darkblue')
   return (
     <ThemeContext.Provider value={theme}>
-      <Suspense fallback={<h2>loading route...</h2>}>
         <div style={{background: "url(http://pets-images.dev-apis.com/pets/wallpaperB.jpg)"}}>
           <header>
             <Link to='/'>Adopt Me!</Link>
@@ -20,7 +19,6 @@ function App() {
             <Route path="/" element={<SearchParams />} />
           </Routes>
         </div>
-      </Suspense>
     </ThemeContext.Provider>
     );
 }
